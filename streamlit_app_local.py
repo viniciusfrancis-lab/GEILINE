@@ -162,7 +162,7 @@ def show_feedback_controls(message_index):
 # ========================
 # UI
 # ========================
-st.title("🏫 Olá, sou GeiLine sua Assistente Virtual", anchor=False)
+st.title("Olá, sou GeiLine sua Assistente Virtual", anchor=False)
 st.caption("Respostas baseadas exclusivamente na **Síntese Geral da Rede Estadual de Ensino**.")
 
 # Carrega dados com spinner
