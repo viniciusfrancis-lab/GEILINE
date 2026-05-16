@@ -162,6 +162,21 @@ def show_feedback_controls(message_index):
 # ========================
 # UI
 # ========================
+# 1. Configuração da página (opcional, mas bom para garantir o layout)
+st.set_page_config(layout="centered")
+
+# 2. Criando as colunas para centralizar
+# O truque é o peso das colunas: as das pontas são iguais (1) e a do meio (2) segura a imagem
+col1, col2, col3 = st.columns([1, 2, 1])
+
+with col2:
+    st.image(
+        "LOGO.PNG",  # Pode ser um arquivo local ou uma URL
+        use_container_width=True,  # Garante que ela se ajuste bem ao tamanho da coluna
+    )
+
+
+
 st.title("Olá, sou GeiLine sua Assistente Virtual", anchor=False)
 st.caption("Respostas baseadas exclusivamente na **Síntese Geral da Rede Estadual de Ensino**.")
 
