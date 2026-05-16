@@ -171,10 +171,9 @@ col1, col2, col3 = st.columns([1, 2, 1])
 
 with col2:
     st.image(
-        "LOGO.PNG",  # Pode ser um arquivo local ou uma URL
+        "LOGO.png",  # Pode ser um arquivo local ou uma URL
         use_container_width=True,  # Garante que ela se ajuste bem ao tamanho da coluna
     )
-
 
 
 st.title("Olá, sou GeiLine sua Assistente Virtual", anchor=False)
