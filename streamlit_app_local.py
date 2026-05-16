@@ -11,7 +11,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from groq import Groq
 
-st.set_page_config(page_title="Assistente SEDU", page_icon="🏫")
+st.set_page_config(page_title="Olá, sou GeiLine sua Assistente Virtual", page_icon="🏫")
 
 # ========================
 # CONFIGURAÇÕES
