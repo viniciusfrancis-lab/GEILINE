@@ -116,6 +116,10 @@ def build_question_prompt(question, dados_contexto):
         - Use markdown: tabelas, listas e negrito para destacar informações importantes.
         - Não invente dados. Não use conhecimento externo.
         - responda apenas à pergunta feita, evite informações adicionais que não foram solicitadas.
+                                   - Se a pergunta for ambígua, peça esclarecimentos em vez de assumir algo.
+                                   - Se a pergunta for sobre tendências ou comparações, baseie-se apenas nos dados atuais, sem especular sobre o futuro ou o passado.
+                                    - Se a pergunta envolver cálculos, faça-os apenas com os dados fornecidos, e mostre o passo a passo do cálculo.
+                                   - Se a pergunta for sobre uma categoria específica (ex: "número de alunos por município"), responda apenas com essa categoria, sem incluir outras informações que não foram solicitadas.
     """)
 
     return build_prompt(
