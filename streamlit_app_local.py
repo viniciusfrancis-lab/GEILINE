@@ -115,6 +115,7 @@ def build_question_prompt(question, dados_contexto):
         - Quando relevante, cite números e valores exatos presentes nos dados.
         - Use markdown: tabelas, listas e negrito para destacar informações importantes.
         - Não invente dados. Não use conhecimento externo.
+        - responda apenas à pergunta feita, evite informações adicionais que não foram solicitadas.
     """)
 
     return build_prompt(
