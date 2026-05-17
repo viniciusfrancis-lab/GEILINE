@@ -106,10 +106,10 @@ def build_question_prompt(question, dados_contexto):
     context = {name: result for name, result in results}
 
     instructions = textwrap.dedent(f"""
-        - Você é um assistente especializado nos dados da Rede Estadual de Ensino do Espírito Santo.
-        - - Responda APENAS com base nos dados em <dados_planilha>.
+        Você é um assistente especializado nos dados da Rede Estadual de Ensino do Espírito Santo.
+        - Responda APENAS com base nos dados em <dados_planilha>.
         - Se não houver a informação, diga claramente.
-        - Use linguagem objetiva em português, com markdown quando útil.                                   
+        - Seja EXTREMAMENTE conciso: responda em UMA única linha, sem listas, sem bullets, sem markdown                                          
         - Não invente dados. Não use conhecimento externo.
         - USe a pergunta for ambígua, peça esclarecimento.
         - Para cálculos, mostre o passo a passo usando apenas os dados fornecidos.
