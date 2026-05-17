@@ -32,17 +32,15 @@ MIN_TIME_BETWEEN_REQUESTS = datetime.timedelta(seconds=2)
 # ========================
 @st.cache_data
 def carregar_dados():
-    """Lê todas as abas do Excel e transforma em texto para contexto."""
     xl = pd.ExcelFile(ARQUIVO_DADOS)
     partes = []
-
     for aba in xl.sheet_names:
         df = xl.parse(aba)
         df = df.dropna(how="all").fillna("")
+        # CSV é ~40% menor que to_string()
         texto = f"### Aba: {aba}\n"
-        texto += df.to_string(index=False)
+        texto += df.to_csv(index=False)
         partes.append(texto)
-
     return "\n\n".join(partes)
 
 
@@ -109,19 +107,12 @@ def build_question_prompt(question, dados_contexto):
 
     instructions = textwrap.dedent(f"""
         - Você é um assistente especializado nos dados da Rede Estadual de Ensino do Espírito Santo.
-        - Responda APENAS com base nos dados fornecidos na tag <dados_planilha>.
-        - Se a pergunta não puder ser respondida com os dados disponíveis, diga claramente que a informação não está na planilha.
-        - Use linguagem clara e objetiva em português.
-        - Quando relevante, cite números e valores exatos presentes nos dados.
-        - Use markdown: tabelas, listas e negrito para destacar informações importantes.
+        - - Responda APENAS com base nos dados em <dados_planilha>.
+        - Se não houver a informação, diga claramente.
+        - Use linguagem objetiva em português, com markdown quando útil.                                   
         - Não invente dados. Não use conhecimento externo.
-                                   - forneca somente a resposta direta à pergunta, sem rodeios ou explicações adicionais, mesmo que a pergunta seja complexa, sem resumoes ou simplificações, sem explicações sobre como chegou à resposta, sem suposições ou inferências que não estejam explicitamente nos dados.
-        - responda apenas à pergunta feita, evite informações adicionais que não foram solicitadas.
-                                   - Se a pergunta for ambígua, peça esclarecimentos em vez de assumir algo.
-                                   - Se a pergunta for sobre tendências ou comparações, baseie-se apenas nos dados atuais, sem especular sobre o futuro ou o passado.
-                                    - Se a pergunta envolver cálculos, faça-os apenas com os dados fornecidos, e mostre o passo a passo do cálculo.
-                                   - Se a pergunta for sobre uma categoria específica (ex: "número de alunos por município"), responda apenas com essa categoria, sem incluir outras informações que não foram solicitadas.
-
+        - USe a pergunta for ambígua, peça esclarecimento.
+        - Para cálculos, mostre o passo a passo usando apenas os dados fornecidos.
     """)
 
     return build_prompt(
