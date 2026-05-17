@@ -50,8 +50,6 @@ def carregar_dados():
 @st.cache_resource
 def get_client():
     return Groq(api_key=GROQ_API_KEY)
-
-
 # ========================
 # HELPERS
 # ========================
@@ -164,9 +162,8 @@ with col2:
         use_container_width=True,  # Garante que ela se ajuste bem ao tamanho da coluna
     )
 
-
-st.title("Olá, sou GeiLine sua Assistente Virtual", anchor=False)
-st.caption("Respostas baseadas exclusivamente na **Síntese Geral da Rede Estadual de Ensino**.")
+st.title("GeiLine ", anchor=False)
+st.caption("Sua Assistente Virtual")
 
 # Carrega dados com spinner
 with st.spinner("Carregando planilha..."):
@@ -183,13 +180,6 @@ with st.spinner("Carregando planilha..."):
 # Inicializa histórico
 if "messages" not in st.session_state:
     st.session_state.messages = []
-
-# Botão reiniciar
-col1, col2 = st.columns([8, 1])
-with col2:
-    if st.button("🔄 Reiniciar"):
-        st.session_state.messages = []
-        st.rerun()
 
 # Exibe histórico
 for i, message in enumerate(st.session_state.messages):
