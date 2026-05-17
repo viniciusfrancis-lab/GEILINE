@@ -18,7 +18,7 @@ st.set_page_config(page_title="Olá, sou GeiLine sua Assistente Virtual", page_i
 # ========================
 GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
-MODEL = "llama3-8b-8192"
+MODEL = "mixtral-8x7b-32768"
 
 ARQUIVO_DADOS = "dados/SÍNTESE GERAL DA REDE ESTADUAL DE ENSINO.xlsx"
 
