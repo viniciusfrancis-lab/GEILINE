@@ -18,7 +18,7 @@ st.set_page_config(page_title="Olá, sou GeiLine sua Assistente Virtual", page_i
 # ========================
 GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
-MODEL = "llama-3.1-8b-instant-2024-06-18"
+MODEL = "llama-3.1-8b-instant"
 
 ARQUIVO_DADOS = "dados/SÍNTESE GERAL DA REDE ESTADUAL DE ENSINO.xlsx"
 
@@ -163,8 +163,6 @@ def show_feedback_controls(message_index):
 # UI
 # ========================
 # 1. Configuração da página (opcional, mas bom para garantir o layout)
-st.set_page_config(layout="centered")
-
 # 2. Criando as colunas para centralizar
 # O truque é o peso das colunas: as das pontas são iguais (1) e a do meio (2) segura a imagem
 col1, col2, col3 = st.columns([1, 2, 1])
