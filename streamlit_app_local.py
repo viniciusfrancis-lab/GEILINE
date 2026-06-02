@@ -112,7 +112,7 @@ def build_question_prompt(question, dados_contexto):
     - Se a pergunta for ambígua, peça esclarecimento.
     - Para cálculos, mostre o passo a passo usando apenas os dados fornecidos.
     - A palavra quantidade e numero são o mesmo comando.
-    )
+    """)
 
     return build_prompt(
         instructions=instructions,
