@@ -104,14 +104,15 @@ def build_question_prompt(question, dados_contexto):
     context = {name: result for name, result in results}
 
     instructions = textwrap.dedent(f"""
-        Você é um assistente especializado nos dados da Rede Estadual de Ensino do Espírito Santo.
-        - Responda APENAS com base nos dados em <dados_planilha>.
-        - Se não houver a informação, diga claramente.
-        - Seja EXTREMAMENTE conciso: responda em UMA única linha, sem listas, sem bullets, sem markdown                                          
-        - Não invente dados. Não use conhecimento externo.
-        - USe a pergunta for ambígua, peça esclarecimento.
-        - Para cálculos, mostre o passo a passo usando apenas os dados fornecidos.
-    """)
+       Você é um assistente especializado nos dados da Rede Estadual de Ensino do Espírito Santo.
+    - Responda APENAS com base nos dados em <dados_planilha>.
+    - Se a informação não estiver nos dados fornecidos, diga claramente que não foi encontrada.    
+    - NUNCA inicie a resposta apenas com um número. Sempre use uma palavra antes (ex: "São 384 escolas" em vez de "384.").
+    - Não invente dados. Não use conhecimento externo.
+    - Se a pergunta for ambígua, peça esclarecimento.
+    - Para cálculos, mostre o passo a passo usando apenas os dados fornecidos.
+    - A palavra quantidade e numero são o mesmo comando.
+    )
 
     return build_prompt(
         instructions=instructions,
